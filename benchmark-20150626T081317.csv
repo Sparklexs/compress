@@ -1,0 +1,6 @@
+"Algorithm","Sparsity","Bits per int","Compress speed (MiS)","Decompress speed (MiS)"
+"OptPFDS16 + VariableByte",1,2.97,18.018850,390.828041
+"com.song.AFOR.CAFOR@203aab44",1,2.89,0.522185,159.754771
+"OptPFDS16 + VariableByte",2,3.74,13.535675,321.682629
+"com.song.AFOR.CAFOR@75a5555a",2,3.65,0.595810,148.417560
+"OptPFDS16 + VariableByte",3,4.59,11.080518,328.863910

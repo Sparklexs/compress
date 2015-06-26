@@ -1,0 +1,13 @@
+Algorithm,Sparsity,Bits per int,Compress speed (MiS),Decompress speed (MiS)
+com.song.AFOR.CAFOR@2eb6dfa8,1,2.83,0,24
+com.song.AFOR.CAFOR@6de034c6,2,3.69,0,22
+com.song.AFOR.CAFOR@3ca17e57,3,4.51,0,22
+com.song.AFOR.CAFOR@5ed74c35,4,5.27,0,22
+com.song.AFOR.CAFOR@56618102,5,6.24,0,22
+com.song.AFOR.CAFOR@5d1a4ce8,6,7.22,1,21
+com.song.AFOR.CAFOR@7cf4aaca,7,8.07,1,22
+com.song.AFOR.CAFOR@5674fb70,8,8.81,1,22
+com.song.AFOR.CAFOR@414fabe1,9,10,1,20
+com.song.AFOR.CAFOR@2e490e04,10,11.12,1,21
+com.song.AFOR.CAFOR@7dd5894a,11,12.28,1,20
+com.song.AFOR.CAFOR@4ef6d773,12,12.78,1,19
