@@ -377,30 +377,6 @@ public class CAFOR implements IntegerCODEC
 		outpos.set(outOffset + bsLength);
 		outOffset = outpos.get();
 
-		// int[] nums = new int[partition.size()];
-		//
-		// int max = nums[0] = partition.get(0);
-		// for (int i = 1; i < nums.length; i++)
-		// max |= nums[i] = partition.getQuick(i) - partition.getQuick(i - 1);
-		// int maxbit = Util.bits(max);
-
-		// out[outOffset] = S16.compress(nums, 0, nums.length, out,
-		// outpos.get());
-		// outpos.add(out[outOffset]);
-		// outOffset = outpos.get();
-
-		// /* outOffset表示S16编码长度 */
-		// BitsWriter bw = new BitsWriter(out, outOffset, out.length -
-		// outOffset);
-		// for (int i = 0; i < widthParition.size(); i++)
-		// {
-		// bw.write_bits(widthParition.get(i), 5);
-		// }
-		// bw.flush_bits();
-		//
-		// outpos.add((int) bw.size());
-		// outOffset = outpos.get();
-
 		BitsWriter bw = new BitsWriter(out,
 		        outOffset + 1/* 留出1个int存储此次delta编码长度 */, out.length - 1
 		                - outOffset);
@@ -462,81 +438,6 @@ public class CAFOR implements IntegerCODEC
 			BitPacking.fastunpack(in, inoffset + i, tmpwidths, outoffset, 5);
 		}
 		int[] widths = Arrays.copyOfRange(tmpwidths, 0, partition.length);
-
-		// inpos.increment();
-		// int len = in[inOffset];
-		// int[] tmpnums = new int[len * 28];
-		//
-		// int total = S16.uncompress(in, inpos.get(), len, tmpnums, 0,
-		// tmpnums.length);
-		//
-		// for (int i = total - 1; i >= 0; i--)
-		// if (tmpnums[i] == 0)
-		// total--;
-		// else
-		// break;
-		//
-		// // // int[] nums = Arrays.copyOfRange(tmpnums, 0, total);
-		// // int[] partition = new int[total];
-		// // partition[0] = tmpnums[0];
-		// // for (int i = 1; i < partition.length; i++)
-		// // {
-		// // partition[i] = partition[i - 1] + tmpnums[i];
-		// // }
-		// //
-		// inpos.add(len);
-		//
-		// int[] tmpwidths = new int[(total / 32 + 1) * 32];
-		//
-		// int bs = (total * 5 + 31) / 32;
-		// int outoffset = 0;
-		// int inoffset = inpos.get();
-		// inpos.add(bs);
-		// for (int i = 0; i < bs; i += 5, outoffset += 32)
-		// {
-		// int val = in[inoffset + i];
-		// tmpwidths[outoffset + 0] = ((val >>> 27));
-		// tmpwidths[outoffset + 1] = ((val >> 22) & 0x1f);
-		// tmpwidths[outoffset + 2] = ((val >> 17) & 0x1f);
-		// tmpwidths[outoffset + 3] = ((val >> 12) & 0x1f);
-		// tmpwidths[outoffset + 4] = ((val >> 7) & 0x1f);
-		// tmpwidths[outoffset + 5] = ((val >> 2) & 0x1f);
-		// tmpwidths[outoffset + 6] = (val << 3) & 0x1f;
-		// val = in[inoffset + i + 1];
-		// tmpwidths[outoffset + 6] |= ((val >>> 29));
-		// tmpwidths[outoffset + 7] = ((val >> 24) & 0x1f);
-		// tmpwidths[outoffset + 8] = ((val >> 19) & 0x1f);
-		// tmpwidths[outoffset + 9] = ((val >> 14) & 0x1f);
-		// tmpwidths[outoffset + 10] = ((val >> 9) & 0x1f);
-		// tmpwidths[outoffset + 11] = ((val >> 4) & 0x1f);
-		// tmpwidths[outoffset + 12] = (val << 1) & 0x1f;
-		// val = in[inoffset + i + 2];
-		// tmpwidths[outoffset + 12] |= ((val >>> 31));
-		// tmpwidths[outoffset + 13] = ((val >> 26) & 0x1f);
-		// tmpwidths[outoffset + 14] = ((val >> 21) & 0x1f);
-		// tmpwidths[outoffset + 15] = ((val >> 16) & 0x1f);
-		// tmpwidths[outoffset + 16] = ((val >> 11) & 0x1f);
-		// tmpwidths[outoffset + 17] = ((val >> 6) & 0x1f);
-		// tmpwidths[outoffset + 18] = ((val >> 1) & 0x1f);
-		// tmpwidths[outoffset + 19] = (val << 4) & 0x1f;
-		// val = in[inoffset + i + 3];
-		// tmpwidths[outoffset + 19] |= ((val >>> 28));
-		// tmpwidths[outoffset + 20] = ((val >> 23) & 0x1f);
-		// tmpwidths[outoffset + 21] = ((val >> 18) & 0x1f);
-		// tmpwidths[outoffset + 22] = ((val >> 13) & 0x1f);
-		// tmpwidths[outoffset + 23] = ((val >> 8) & 0x1f);
-		// tmpwidths[outoffset + 24] = ((val >> 3) & 0x1f);
-		// tmpwidths[outoffset + 25] = (val << 2) & 0x1f;
-		// val = in[inoffset + i + 4];
-		// tmpwidths[outoffset + 25] |= ((val >>> 30));
-		// tmpwidths[outoffset + 26] = ((val >> 25) & 0x1f);
-		// tmpwidths[outoffset + 27] = ((val >> 20) & 0x1f);
-		// tmpwidths[outoffset + 28] = ((val >> 15) & 0x1f);
-		// tmpwidths[outoffset + 29] = ((val >> 10) & 0x1f);
-		// tmpwidths[outoffset + 30] = ((val >> 5) & 0x1f);
-		// tmpwidths[outoffset + 31] = (val & 0x1f);
-		// }
-		// int[] widths = Arrays.copyOfRange(tmpwidths, 0, total);
 
 		int n = in[inpos.get()];
 		inpos.increment();
@@ -626,7 +527,7 @@ public class CAFOR implements IntegerCODEC
 				System.err.println(i + ":" + outcome[i] + "," + in[i]);
 			}
 		}
-System.err.println("FINISH!");
+		System.err.println("FINISH!");
 	}
 
 }
