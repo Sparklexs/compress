@@ -30,7 +30,7 @@ import me.lemire.compression.SimpleE2;
 import me.lemire.compression.VariableByte;
 
 import com.kamikaze.pfordelta.PForDelta;
-import com.song.AFOR.CAFOR;
+import com.song.FOR.CAFOR;
 import com.song.vse.VSE_R;
 
 /**

@@ -1,4 +1,4 @@
-package com.song.AFOR;
+package com.song.FOR;
 
 public class CAFOR_CONSTANT
 {
